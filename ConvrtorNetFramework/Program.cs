@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using ConvertingNetFramework;
 
 namespace ConvrtorNetFramework
 {
@@ -31,8 +32,8 @@ namespace ConvrtorNetFramework
                     Console.Write("Введите полный путь до файлов png:");
                     DirectoryInfo dir = new DirectoryInfo(Console.ReadLine());
                     var imgs = dir.EnumerateFiles()
-                        .Where(e => e.Name == ".png")
-                        .OrderBy(e=>e.Name)
+                        .Where(e => e.Extension == ".png")
+                        .OrderBy(e => e.Name)
                         .ToList();
                     Converting.Pngs2Pdf(imgs);
                     break;
