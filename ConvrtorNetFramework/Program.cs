@@ -22,7 +22,7 @@ namespace ConvrtorNetFramework
                     var fileNameWithoutExt = "name";
                     using (var stream = new FileStream(fileInfo.FullName, FileMode.Open))
                     {
-                        Converting.Pdf2Png(fileInfo.Directory.FullName, fileNameWithoutExt , 300, stream);
+                        Converting.Pdf2Png(fileInfo.Directory.FullName, fileNameWithoutExt, 300, stream);
                     }
 
                     break;
@@ -33,7 +33,7 @@ namespace ConvrtorNetFramework
                     DirectoryInfo dir = new DirectoryInfo(Console.ReadLine());
                     var imgs = dir.EnumerateFiles()
                         .Where(e => e.Extension == ".png")
-                        .OrderBy(e => e.Name)
+                        .OrderBy(e => int.Parse(e.Name.Replace(".png", "")))
                         .ToList();
                     Converting.Pngs2Pdf(imgs);
                     break;
